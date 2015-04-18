@@ -22,4 +22,4 @@ let ``poiseuille flow`` () =
     let velocities = lbm.getVelocity ()
     let velocities_ = Array.init nj (fun j -> velocities.[ni/2 + ni*j])
     let expected = [|0.0003876934; 0.009466321; 0.0188583955; 0.0253776275; 0.02863464; 0.02863464; 0.0253776275; 0.0188583955; 0.009466321; 0.0003876934|]
-    velocities_ |> should (equalWithin 1e-8) expected
+    velocities_ |> should (equalWithin 1e-5) expected

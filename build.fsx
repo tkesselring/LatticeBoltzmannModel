@@ -14,19 +14,18 @@ Target "Build" (fun _ ->
     |> Log "Build-Output: "
 )
 
-// no unit tests do exist for the moment.
-//Target "Tests" (fun _ ->
-//    !! "/**/Test.*.dll"
-//    ++ "/**/Test.*.exe"
-//    |> SetBaseDir resultsDir
-//    |> NUnitParallel (fun defaults -> { defaults with Framework = "net-4.5"})
-//)
+Target "Tests" (fun _ ->
+    !! "/**/*.exe"
+//    ++ "/**/Test.*.dll"
+    |> SetBaseDir resultsDir
+    |> NUnitParallel (fun defaults -> { defaults with Framework = "net-4.5"})
+)
 
 Target "Default" DoNothing
 
 "Clean"
     ==> "Build"
-//    =?> ("Tests", not <| hasBuildParam "NoTests")
+    =?> ("Tests", not <| hasBuildParam "NoTests")
     ==> "Default"
 
 RunTargetOrDefault "Default"

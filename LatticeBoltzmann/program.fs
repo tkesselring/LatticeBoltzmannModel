@@ -5,6 +5,5 @@ open LattieBoltzmann
 
 [<EntryPoint>]
 let main argv =
-//    LBM.Display.runSim()
-    Tests.``poiseuille flow``()
+    LBM.Display.runSim()
     0
