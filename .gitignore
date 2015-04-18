@@ -28,7 +28,4 @@ results/
 TestResult.xml
 bin
 obj
-bin
-obj
-obj
-bin
+*.v2.ncrunchsolution

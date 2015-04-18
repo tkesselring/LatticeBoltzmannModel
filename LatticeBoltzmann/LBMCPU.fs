@@ -90,9 +90,9 @@ type LatticeBoltzmannModel(ni, nj, roout_, vxin_, tau_) =
                 if i = 0 then im1 <- 0
                 if i = ni - 1 then ip1 <- ni - 1
                 tmpf1.[i0] <- lattice.F1.[i2D ni im1 j]
-                tmpf2.[i0] <- lattice.F2.[i2D ni i jm1]
+                tmpf2.[i0] <- lattice.F2.[i2D ni i   jm1]
                 tmpf3.[i0] <- lattice.F3.[i2D ni ip1 j]
-                tmpf4.[i0] <- lattice.F4.[i2D ni i jp1]
+                tmpf4.[i0] <- lattice.F4.[i2D ni i   jp1]
                 tmpf5.[i0] <- lattice.F5.[i2D ni im1 jm1]
                 tmpf6.[i0] <- lattice.F6.[i2D ni ip1 jm1]
                 tmpf7.[i0] <- lattice.F7.[i2D ni ip1 jp1]
