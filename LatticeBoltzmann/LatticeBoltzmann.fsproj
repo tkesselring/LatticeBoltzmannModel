@@ -57,6 +57,7 @@
     <None Include="App.config" />
     <Compile Include="data.fs" />
     <Compile Include="LBMCPU.fs" />
+    <Compile Include="LBMGPU.fs" />
     <Compile Include="Display.fs" />
     <Compile Include="Tests.fs" />
     <Compile Include="program.fs" />
@@ -80,6 +81,18 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6')) Or ($(TargetFrameworkIdentifier) == 'MonoAndroid') Or ($(TargetFrameworkIdentifier) == 'MonoTouch')">
+      <ItemGroup>
+        <Reference Include="Alea.CUDA">
+          <HintPath>..\packages\Alea.CUDA\lib\net40\Alea.CUDA.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="..\packages\Alea.CUDA\build\Alea.CUDA.targets" Condition="Exists('..\packages\Alea.CUDA\build\Alea.CUDA.targets')" Label="Paket" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v3.0' Or $(TargetFrameworkVersion) == 'v3.5')">
       <ItemGroup>
